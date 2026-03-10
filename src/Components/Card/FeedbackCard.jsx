@@ -23,7 +23,7 @@ export default function FeedbackCard({fd}) {
   };
 
   return (
-    <div className=" bg-amber-300 shadow-md rounded-2xl p-5 border border-gray-200 hover:shadow-lg transition duration-300">
+    <div className=" bg-white shadow-md rounded-2xl p-5 border border-gray-200 hover:shadow-lg transition duration-300">
       <div className="mb-3 text-sm text-gray-500">{formattedDate}</div>
 
       {isEditing ? (
