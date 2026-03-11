@@ -7,7 +7,10 @@ export const metadata={
 }
 
 const getFeedback = async()=>{
-    const res = await fetch("http://localhost:3000/api/feedback")
+    const res = await fetch(`${process.env.NEXT_PUBLIC_server}/api/feedback`,{
+        cache:"force-cache",
+        next:{ revalidate:60 }
+    })
     return await res.json()
 }
 
@@ -19,7 +22,7 @@ const FeedbackPage  =async () => {
             <h1 className="text-3xl font-bold text-orange-400">{feedback.length} Feedback</h1>
         <div className="">
 
-            <Link href={"/feedback/add"} className='btn bg-orange-500 text-white' >Add  Feedback</Link>
+            <Link href={"/feedback/Add"} className='btn bg-orange-500 text-white' >Add  Feedback</Link>
         </div>
 
             <div className="my-3 space-y-3">

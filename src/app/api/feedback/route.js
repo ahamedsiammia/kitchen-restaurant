@@ -1,4 +1,5 @@
 import { connect } from "@/app/lib/dbConect";
+import { revalidatePath } from "next/cache";
 
 const feedbackCollection = connect("feedbacks");
 
@@ -19,6 +20,7 @@ export async function POST(request){
 
     const newFeedback = {message, date : new Date().toISOString()};
     const result = await feedbackCollection.insertOne(newFeedback)
+    revalidatePath("/feedback")
     
     return Response.json(result)
 }
